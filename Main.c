@@ -1,35 +1,47 @@
+#include <stdio.h>
 #include "FilaUtils.h"
-
+void menu();
 int main(){
   FILA * fila = (FILA *) malloc(sizeof(FILA));
-  INFO info1;
-  INFO info2;
-  INFO info3;
+  int op = 0;
 
-  strcpy(info1.nome, "teste 1");
-  info1.idade = 15;
-  strcpy(info2.nome, "teste 2");
-  info2.idade = 20;
-  strcpy(info3.nome, "teste 3");
-  info3.idade = 30;
-  inserir(fila, info1);
-  inserir(fila, info2);
-  inserir(fila, info3);
+  do{
+      menu();
+      scanf("%d", &op);
+      switch(op){
+          case 1:
+            inserir(fila, getInfo());
+            break;
+          case 2:
+            remover(fila);
+            __fpurge(stdin);
+            getchar();
+            break;
+          case 3:
+            imprimirFila(fila);
+            __fpurge(stdin);
+            getchar();
+            break;
+          case 4:
+            imprimirInterativo(fila);
+            __fpurge(stdin);
+            getchar();
+            break;
+          case 0:
+            return;
+            break;
+           default:
+             puts("Opção iválida.");
+             break;
+      }
+      system("clear");
+  }while(op != 0);
 
-imprimirFila(fila);
-
-  imprimirInterativo(fila);
-
-
-  imprimirFila(fila);
-
-  remover(fila);
-  imprimirFila(fila);
-  remover(fila);
-  imprimirFila(fila);
-  remover(fila);
-  imprimirFila(fila);
-
+void menu(){
+    printf("1 - Inserir elemento\n2 - Remover elemento \n3 - Imprimir todos elementos\n4 - Percorrer os elementos \n0 - Sair.\n");
 }
+
+
+
 
 
