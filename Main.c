@@ -36,6 +36,7 @@ int main(){
       }
       system("clear");
   }while(op != 0);
+}
 
 void menu(){
     printf("1 - Inserir elemento\n2 - Remover elemento \n3 - Imprimir todos elementos\n4 - Percorrer os elementos \n0 - Sair.\n");
