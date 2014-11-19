@@ -56,19 +56,22 @@ void inserir(FILA *fila, INFO info){
 }
 
 void remover(FILA *fila){
-    puts("1");
     if(fila->inicio == NULL){
-        puts("nulll");
         perror("Fila vazia");
     }else{
-
         NO *aux = fila->inicio;
-        fila->inicio = aux->prox;
-        fila->fim->prox = fila->inicio;
-        fila->inicio->ant = fila->fim;
-        aux->ant = NULL;
-        aux->prox = NULL;
-        free(aux);
+        if(fila->inicio->ant == fila->inicio){
+            fila->inicio = NULL;
+            fila->fim = NULL;
+            free(aux);
+        }else{
+            fila->inicio = aux->prox;
+            fila->fim->prox = fila->inicio;
+            fila->inicio->ant = fila->fim;
+            aux->ant = NULL;
+            aux->prox = NULL;
+            free(aux);
+        }
     }
 }
 
